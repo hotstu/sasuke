@@ -1,11 +1,10 @@
 [![](https://jitpack.io/v/hotstu/sasuke.svg)](https://jitpack.io/#hotstu/sasuke)
-
 # sasuke表格库
 a pure simple table-grid view implementation based on RecyclerView
 基于recyclerview的组合自定义view
 原理和scrollablepanel一样，进行了优化，例如使用merge减少嵌套
 
-![预览图](./preview/1.png)
+<img src="./preview/1.png" width="400">
 
 ## How to use
 
