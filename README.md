@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/hotstu/sasuke.svg)](https://jitpack.io/#hotstu/sasuke)
+
 #sasuke
 表格库
 
