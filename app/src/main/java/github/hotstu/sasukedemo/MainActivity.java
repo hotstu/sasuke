@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sasuke = findViewById(R.id.sasuke);
-        sasuke.setStickColumnHead(false);
-        sasuke.setStickRowHead(false);
+        sasuke.setStickColumnHead(true);
+        sasuke.setStickRowHead(true);
+        sasuke.setAdapter(null);
         sasuke.setAdapter(new MySasukeAdapter());
     }
 

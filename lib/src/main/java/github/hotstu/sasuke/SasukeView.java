@@ -76,6 +76,10 @@ public class SasukeView extends LinearLayout {
     public void setAdapter(SasukeAdapter adapter) {
         if (rowAdapter != null) {
             rowAdapter.destroy();
+            rowAdapter = null;
+        }
+        if (adapter == null) {
+            return;
         }
         rowAdapter = new RowAdapter(adapter, stickColumnHead, stickRowHead);
         list_content.setAdapter(rowAdapter);
