@@ -40,7 +40,7 @@ subprojects {
     }
     if ("lib" == it.name) {
         group = 'github.hotstu.sasuke'//发布到 bintray 的groupId号
-        version = "1.0.0" // 发布到 bintray 的版本号
+        version = "1.0.3" // 发布到 bintray 的版本号
     }
 }
 
