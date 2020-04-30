@@ -1,6 +1,7 @@
 package github.hotstu.sasukedemo;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -15,30 +16,24 @@ import github.hotstu.sasuke.SasukeView;
 public class MainActivity extends AppCompatActivity {
 
     private SasukeView sasuke;
-    private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sasuke = findViewById(R.id.sasuke);
-        sasuke.setStickColumnHead(true);
-        sasuke.setStickRowHead(true);
-        sasuke.setAdapter(null);
+        sasuke.setStickColumnHead(false);
+        sasuke.setStickRowHead(false);
         sasuke.setAdapter(new MySasukeAdapter());
     }
 
-    public void onClick(View view) {
-        count += 1;
-        sasuke.setAdapter(new MySasukeAdapter());
-    }
 
     public void stickRow(View view) {
         boolean checked = ((CheckBox) view).isChecked();
         sasuke.setStickRowHead(checked);
     }
 
-    public void stickColum(View view) {
+    public void stickColumn(View view) {
         boolean checked = ((CheckBox) view).isChecked();
         sasuke.setStickColumnHead(checked);
     }
@@ -65,7 +60,18 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint("SetTextI18n")
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int row, int column) {
-            ((VH) holder).t.setText(count + "" + row + "-" + column);
+            if (row == 0) {
+                ((VH) holder).t.setBackgroundColor(Color.CYAN);
+            }
+            if (column == 0) {
+                ((VH) holder).t.setBackgroundColor(Color.CYAN);
+            }
+            ((VH) holder).t.setText("" + row + "-" + column);
+        }
+
+        @Override
+        public int getItemViewType(int row, int column) {
+            return (row == 0|| column == 0 ? 1: 0);
         }
 
         @Override

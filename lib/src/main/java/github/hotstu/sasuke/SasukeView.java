@@ -83,8 +83,12 @@ public class SasukeView extends LinearLayout {
         }
         rowAdapter = new RowAdapter(adapter, stickColumnHead, stickRowHead);
         list_content.setAdapter(rowAdapter);
+        syncStickyHeaders(adapter);
+    }
+
+    private void syncStickyHeaders(SasukeAdapter adapter) {
         if (stickColumnHead) {
-            column_header.setAdapter(new SasukeRowView.ColumnAdapter(adapter, 0, stickRowHead));
+            column_header.setAdapter(new ColumnAdapter(adapter, 0, stickRowHead));
             column_header.setVisibility(View.VISIBLE);
             rowAdapter.initRow(column_header.list_row);
             if(stickRowHead) {
@@ -205,10 +209,10 @@ public class SasukeView extends LinearLayout {
         @Override
         public void onBindViewHolder(RowVH holder, int position) {
             int p = position + (stickColumnHeader ? 1 : 0);
-            if (holder.v.getAdpater() == null) {
-                holder.v.setAdapter(new SasukeRowView.ColumnAdapter(delegate, p, stickRowHeader));
+            if (holder.v.getAdapter() == null) {
+                holder.v.setAdapter(new ColumnAdapter(delegate, p, stickRowHeader));
             } else {
-                holder.v.getAdpater().setRow(p);
+                holder.v.getAdapter().setRow(p);
             }
 //            if (!observerList.contains(holder.v.list_row)) {
 //                observerList.add(holder.v.list_row);
